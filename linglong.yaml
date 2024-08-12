@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.StreamControl
+  name: StreamControl
+  version: 0.3.0.1
+  kind: app
+  description: |
+    a simple program I put together in Qt to write an XML file for use with XSplit and it's ability to use SWF files to display information.
+
+command:
+  - /opt/apps/io.github.StreamControl/files/bin/StreamControl
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/farpenoodle/StreamControl.git
+    version: master
+    commit: c29caea7625d8654fe78b8db3cc7ae632ce69286
+
+build: |
+  cd /project/linglong/sources/StreamControl.git
+  git apply ../../../0001-install.patch
+  cd StreamControl
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
