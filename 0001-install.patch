@@ -1,0 +1,50 @@
+From d70a4672463fef041135c2bfc94e842557ee4897 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 10 Aug 2024 15:25:56 +0800
+Subject: [PATCH] install
+
+---
+ StreamControl/StreamControl.desktop | 12 ++++++++++++
+ StreamControl/StreamControl.pro     |  9 +++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 StreamControl/StreamControl.desktop
+
+diff --git a/StreamControl/StreamControl.desktop b/StreamControl/StreamControl.desktop
+new file mode 100644
+index 0000000..e268ce9
+--- /dev/null
++++ b/StreamControl/StreamControl.desktop
+@@ -0,0 +1,12 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=StreamControl
++Name=StreamControl
++Name[zh_CN]=StreamControl
++Icon=r1logo2trans-crop
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=StreamControl
++Version=0.3
++
+diff --git a/StreamControl/StreamControl.pro b/StreamControl/StreamControl.pro
+index bb05b01..53b3bac 100644
+--- a/StreamControl/StreamControl.pro
++++ b/StreamControl/StreamControl.pro
+@@ -40,3 +40,12 @@ win32 {
+ }
+ 
+ CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
++
++
++target.path = $$PREFIX/bin
++desktop.files = StreamControl.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons
++icons.files = icons/r1logo2trans-crop.png
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+
